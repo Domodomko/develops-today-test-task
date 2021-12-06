@@ -16,6 +16,7 @@ A Django app made as a test task for a Backend-developer vacancy.
     - **/update-delete-post/<int:pk>/** - API Update or Delete Post
     - **/create-comment/<int:post_pk>/** - API Create Comment
     - **/update-delete-comment/<int:pk>/** - API Update or Delete Comment
+    - **/post-upvote/<int:post_pk>/** - API Upvote the Post
 
 
 ## Installation
