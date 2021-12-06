@@ -1,7 +1,7 @@
 # Develops Today Test Task
 ## Made by Sergei Shinn
 A Django app made as a test task for a Backend-developer vacancy.
-
+## [Deployed On Heroku](https://develops-today-test-task.herokuapp.com/)
 
 ## Link Structure
 
