@@ -1,0 +1,56 @@
+version: '3.10'
+
+x-django: &django
+  build:
+    context: .
+    dockerfile: ./docker/django/Dockerfile
+  image: dt-django:local
+  restart: unless-stopped
+  env_file:
+    - .env
+  network_mode: host
+  depends_on:
+    - redis
+    - dt-main-postgresql
+  volumes:
+    - .:/web/app
+
+services:
+  redis:
+    image: redis:5-alpine
+    restart: unless-stopped
+    ports:
+      - 6379:6379
+
+  dt-main-postgresql:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB_HOST=${POSTGRES_MAIN_DB_HOST}
+      - POSTGRES_DB_PORT=${POSTGRES_MAIN_DB_PORT}
+      - POSTGRES_DB=${POSTGRES_MAIN_DB_NAME}
+      - POSTGRES_USER=${POSTGRES_MAIN_DB_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_MAIN_DB_PASSWORD}
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+
+
+  django:
+    <<: *django
+    command: [ 'python', 'manage.py', 'runserver', '0.0.0.0:8000']
+
+  celery:
+    <<: *django
+    command: [ 'celery', '-A', 'develops_today', 'worker', '-l', 'info' ]
+
+  celery-beat:
+    <<: *django
+    command: [ 'celery', '-A', 'develops_today', 'beat', '-l', 'info' ]
+
+
+volumes:
+  postgresql_data:
