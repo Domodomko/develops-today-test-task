@@ -11,12 +11,12 @@ A Django app made as a test task for a Backend-developer vacancy.
 - **/admin** - Admin panel
 - **/api** - API part of the App
     - **/posts-list** - API Posts List
-    - **/post-detail/<int:pk>/** - API Post Detail
+    - **/post-detail/(int:pk)/** - API Post Detail
     - **/create-post** - API Create new Post
-    - **/update-delete-post/<int:pk>/** - API Update or Delete Post
-    - **/create-comment/<int:post_pk>/** - API Create Comment
-    - **/update-delete-comment/<int:pk>/** - API Update or Delete Comment
-    - **/post-upvote/<int:post_pk>/** - API Upvote the Post
+    - **/update-delete-post/(int:pk)/** - API Update or Delete Post
+    - **/create-comment/(int:post_pk)/** - API Create Comment
+    - **/update-delete-comment/(int:pk)/** - API Update or Delete Comment
+    - **/post-upvote/(int:post_pk)/** - API Upvote the Post
 
 
 ## Installation
