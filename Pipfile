@@ -16,6 +16,8 @@ pre-commit = "*"
 django-debug-toolbar = "*"
 flake8 = "*"
 drf-yasg = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 

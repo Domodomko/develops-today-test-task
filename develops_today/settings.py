@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from decouple import config
 from psycopg2.extensions import ISOLATION_LEVEL_READ_COMMITTED
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -146,5 +147,7 @@ REDIS_URL = (
 
 
 # Debug Toolbar
-
 INTERNAL_IPS = ["127.0.0.1"]
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
