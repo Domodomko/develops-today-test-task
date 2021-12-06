@@ -1,6 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 
 from .serializers import PostSerializer, CommentSerializer, PostWithCommentsSerializer
 from .models import Post, Comment
@@ -63,3 +64,22 @@ class CommentUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CommentSerializer
     queryset = Comment.objects.all()
     permissions = [IsAuthenticated, IsOwnerOrReadOnly]
+
+
+# This is the simplest implementation of upvotes.
+# If necessary, I can make a separate table M2M for upvotes to avoid cheating from one user.
+@api_view(["GET"])
+@permission_classes((IsAuthenticated,))
+def post_upvote(request, post_pk):
+    try:
+        post = Post.objects.get(pk=post_pk)
+        post.upvotes_ammount += 1
+        post.save()
+        return Response(
+            {
+                "message": "The upvote delivered successfully.",
+                "current_upvotes_ammount": post.upvotes_ammount,
+            }
+        )
+    except Post.DoesNotExist:
+        return Response({"message": "Something went wrong."})

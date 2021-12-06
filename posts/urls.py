@@ -7,6 +7,7 @@ from .views import (
     CommentCreateView,
     PostDetailView,
     CommentUpdateDeleteView,
+    post_upvote,
 )
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
         CommentUpdateDeleteView.as_view(),
         name="update-delete-comment",
     ),
+    path("api/post-upvote/<int:post_pk>/", post_upvote, name="post-upvote"),
 ]
