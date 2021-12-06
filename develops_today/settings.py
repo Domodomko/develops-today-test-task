@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ["localhost", "https://develops-today-test-task.herokuapp.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -137,7 +137,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Celery and Redis
 
-CELERY_BROKER_URL = config("CELERY_BROKER_URL")
+CELERY_BROKER_URL = f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}"
+
+REDIS_URL = f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}"
+
 
 # Debug Toolbar
 INTERNAL_IPS = ["127.0.0.1"]
