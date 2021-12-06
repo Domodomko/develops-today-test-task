@@ -12,6 +12,7 @@ celery = "*"
 django-celery-beat = "*"
 psycopg2-binary = "*"
 django-redis = "*"
+pre-commit = "*"
 
 [dev-packages]
 
