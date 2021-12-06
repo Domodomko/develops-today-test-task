@@ -16,6 +16,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def author_name(self):
+        return f"{self.author.first_name} {self.author.last_name}"
+
 
 class Comment(models.Model):
     content = models.TextField(max_length=1000, verbose_name="Content")
@@ -31,3 +34,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.author} for {self.post}"
+
+    def author_name(self):
+        return f"{self.author.first_name} {self.author.last_name}"

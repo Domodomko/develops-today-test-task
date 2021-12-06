@@ -12,7 +12,7 @@ class PostCreateView(generics.ListCreateAPIView):
     permissions = [IsAuthenticated]
 
     def get_queryset(self):
-        return Post.objects.filter(author=self.request.user)
+        return Post.objects.filter(author=self.request.user).prefetch_related("author")
 
     def create(self, request, **kwargs):
         serializer = self.serializer_class(data=request.data)
@@ -33,12 +33,12 @@ class PostUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 class PostListView(generics.ListAPIView):
     serializer_class = PostSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().prefetch_related("author")
 
 
 class PostDetailView(generics.RetrieveAPIView):
     serializer_class = PostWithCommentsSerializer
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().prefetch_related("author", "comments__author")
 
 
 class CommentCreateView(generics.CreateAPIView):
