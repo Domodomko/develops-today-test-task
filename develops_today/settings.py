@@ -137,10 +137,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Celery and Redis
 
-CELERY_BROKER_URL = f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}"
-
-REDIS_URL = f"redis://{config('REDIS_HOST')}:{config('REDIS_PORT')}"
-
+CELERY_BROKER_URL = config("CELERY_BROKER_URL")
 
 # Debug Toolbar
 INTERNAL_IPS = ["127.0.0.1"]
