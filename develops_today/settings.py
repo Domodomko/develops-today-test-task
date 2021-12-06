@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3rd party
     "rest_framework",
     "debug_toolbar",
+    "drf_yasg",
     # local apps
     "posts",
 ]

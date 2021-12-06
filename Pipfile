@@ -15,6 +15,7 @@ django-redis = "*"
 pre-commit = "*"
 django-debug-toolbar = "*"
 flake8 = "*"
+drf-yasg = "*"
 
 [dev-packages]
 
