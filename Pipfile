@@ -13,6 +13,8 @@ django-celery-beat = "*"
 psycopg2-binary = "*"
 django-redis = "*"
 pre-commit = "*"
+django-debug-toolbar = "*"
+flake8 = "*"
 
 [dev-packages]
 
