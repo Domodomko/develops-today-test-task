@@ -1,6 +1,6 @@
 # Develops Today Test Task
 ## Made by Sergei Shinn
-A Django app made as a test task for a Backend-developer vacancy.  
+A Django app made as a test task for a Backend-developer vacancy.
 
 
 ## Link Structure
